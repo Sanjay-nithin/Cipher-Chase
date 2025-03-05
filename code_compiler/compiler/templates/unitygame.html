@@ -1,0 +1,16 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play Cipher Chase</title>
+    <script src="{% static 'unity_build/js/unity_bridge.js' %}"></script>
+</head>
+<body>
+    <h2>Play Cipher Chase</h2>
+    <!-- Embed Unity Game -->
+    <iframe src="{% static 'unity_build/index.html' %}" width="1000" height="650"></iframe>
+    <button onClick="window.Bridge.onUnityButtonClick();">Test Button </button>
+</body>
+</html>

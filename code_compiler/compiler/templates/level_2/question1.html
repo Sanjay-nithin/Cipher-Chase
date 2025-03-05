@@ -1,0 +1,20 @@
+{% extends 'level_2/level2base.html' %}
+
+{% block content %}
+<div class="w-full lg:w-1/3 bg-gray-800 p-6 rounded-xl shadow-xl border border-gray-700">
+    <h1 class="text-3xl font-bold text-cyan-400">CHALLENGE-1</h1>
+    <h2 class="text-xl font-semibold mt-2 text-gray-200">The Lazy Robot Chef</h2>
+    <p class="mt-4 text-gray-300">
+        🧑‍🍳 Your robot chef follows instructions very literally. Instead of putting cheese in a sandwich, 
+        it printed "cheese" on paper! Fix it!
+    </p>
+    <p class="mt-2 text-gray-300">
+        Write a program that <strong>takes a list of ingredients</strong> and makes a sandwich.
+        If it sees "print," it should yell <span class="text-red-400 font-bold">"I'M NOT A PRINTER!"</span>
+    </p>
+    <h3 class="text-lg font-semibold mt-4 text-yellow-400">TEST CASE:</h3>
+    <p id="input" class="bg-gray-700 text-gray-200 p-2 rounded mt-2">
+        INPUT: bread,cheese,lettuce,print,tomato,bread
+    </p>
+</div>
+{% endblock %}

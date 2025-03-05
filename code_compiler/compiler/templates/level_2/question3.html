@@ -1,0 +1,20 @@
+{% extends 'level_2/level2base.html' %} 
+{% block content %}
+<div
+  class="w-full lg:w-1/3 bg-gray-800 p-6 rounded-xl shadow-xl border border-gray-700"
+>
+  <h1 class="text-3xl font-bold text-cyan-400">CHALLENGE-3</h1>
+  <h2 class="text-xl font-semibold mt-2 text-gray-200">The Locked Vault</h2>
+  <p class="mt-4 text-gray-300">
+    You have found an ancient vault that opens only when you enter the sum of all unique digits from a secret code engraved on the door.
+  </p>
+  <p class="mt-2 text-gray-300">
+    Write a program that <strong>takes the list of integers as input</strong> and calculate the sum of unique numbers
+  </p>
+  <h3 class="text-lg font-semibold mt-4 text-yellow-400">TEST CASE:</h3>
+  <p id="input" class="bg-gray-700 text-gray-200 p-2 rounded mt-2">
+    INPUT: 1,2,3,3,4,2,1
+  </p>
+  <p>OUTPUT: 4</p>
+</div>
+{% endblock %}
