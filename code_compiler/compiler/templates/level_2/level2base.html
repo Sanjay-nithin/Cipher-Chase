@@ -56,6 +56,18 @@
             class="mt-6 bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg w-full text-lg transition-all duration-200 transform hover:scale-105">
             Submit Code 🏆
         </button>
+
+        <div class="flex justify-between mt-6">
+            <button id="prev-btn"
+                class="bg-gray-700 hover:bg-gray-800 text-white font-bold py-3 px-6 rounded-lg text-lg transition-all duration-200 transform hover:scale-105">
+                ⬅️ Previous
+            </button>
+        
+            <button id="next-btn"
+                class="bg-gray-700 hover:bg-gray-800 text-white font-bold py-3 px-6 rounded-lg text-lg transition-all duration-200 transform hover:scale-105">
+                Next ➡️
+            </button>
+        </div>
     </div>
 
     <script>
@@ -158,6 +170,9 @@
         document.getElementById("submit-btn").addEventListener("click", async() => {
             alert("Code submitted successfully");
         });
+        
+        {% block redirection %}
+        {% endblock %}
     </script>
 </body>
 </html>

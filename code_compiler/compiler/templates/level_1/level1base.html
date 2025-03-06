@@ -22,7 +22,6 @@
         <div class="text-3xl font-extrabold text-green-400 mb-6 text-center animate-pulse">
             Time Left: <span id="timer">15:00</span>
         </div>
-
         <div class="flex flex-wrap lg:flex-nowrap gap-8">
             <!-- Problem Section -->
             {% block content %}
@@ -56,6 +55,8 @@
             class="mt-6 bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg w-full text-lg transition-all duration-200 transform hover:scale-105">
             Submit Code 🏆
         </button>
+
+        
     </div>
 
     <script>
@@ -153,6 +154,7 @@
         document.getElementById("submit-btn").addEventListener("click", async() => {
             alert("Code submitted successfully");
         });
+
     </script>
 </body>
 </html>

@@ -5,7 +5,7 @@ window.onload = function() {
         onUnityButtonClick: function() {
             console.log("Unity Button Clicked! Sending request to Django...");
 
-            fetch("http://127.0.0.1:8000/unity-button/", {
+            fetch("http://127.0.0.1:8000/start/unity-button/", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

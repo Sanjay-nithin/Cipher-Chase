@@ -1,8 +1,11 @@
 import brotli
 
-with open(r"D:\Game\code_compiler\compiler\static\unity_build\Build\created-games-unity.framework.js.br", "rb") as f:
-    c_d = f.read()
-decompressed = brotli.decompress(c_d)
+with open(r"D:\Cipher-Chase\code_compiler\compiler\static\unity_build\Build\ut-2.framework.js.br", "rb") as file:
+    data = file.read()
 
-with open(r"D:\Game\code_compiler\compiler\static\unity_build\Build\created-games-unity.framework.js", "wb") as f:
-    f.write(decompressed)
+decompressed_data = brotli.decompress(data)
+
+with open(r"D:\Cipher-Chase\code_compiler\compiler\static\unity_build\Build\ut-2.framework.js", "wb") as f:
+    f.write(decompressed_data)
+
+print("Decompression complete: ut-2.framework.js")

@@ -18,3 +18,9 @@
     </p>
 </div>
 {% endblock %}
+
+{% block redirection %}
+document.getElementById("next-btn").addEventListener("click", () => {
+    window.location.href = "{% url 'question' level=2 question=2 %}"; // Change this to the actual next page URL
+});
+{% endblock %}
