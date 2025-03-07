@@ -27,3 +27,11 @@ def unity_button(request):
         return JsonResponse({"error": "Invalid request"}, status=400)  
     except Exception as e:
         print(f"Error occured: {e}")
+        
+def track_tab_switch(request):
+    if request.method == "POST":
+        import json
+        data = json.loads(request.body)
+        print(f"Tab switched {data['count']} times.")
+        return JsonResponse({"status": "success"})
+    return JsonResponse({"error": "Invalid request"}, status=400)

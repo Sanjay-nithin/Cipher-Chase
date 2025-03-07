@@ -168,9 +168,82 @@
         updateTimer();
 
         document.getElementById("submit-btn").addEventListener("click", async() => {
-            alert("Code submitted successfully");
+            showWarning("Code submitted succesfully");
         });
         
+// Function to show a custom warning message without disrupting fullscreen
+function showWarning(message) {
+    let warningBox = document.getElementById("warning-box");
+    if (!warningBox) {
+        warningBox = document.createElement("div");
+        warningBox.id = "warning-box";
+        warningBox.style.position = "fixed";
+        warningBox.style.top = "10px";
+        warningBox.style.left = "50%";
+        warningBox.style.transform = "translateX(-50%)";
+        warningBox.style.background = "rgba(255, 0, 0, 0.9)";
+        warningBox.style.color = "#fff";
+        warningBox.style.padding = "10px 20px";
+        warningBox.style.borderRadius = "8px";
+        warningBox.style.zIndex = "9999";
+        warningBox.style.fontSize = "18px";
+        document.body.appendChild(warningBox);
+    }
+    warningBox.innerHTML = message;
+    warningBox.style.display = "block";
+
+    // Hide after 3 seconds
+    setTimeout(() => {
+        warningBox.style.display = "none";
+    }, 3000);
+}
+
+// Disable right-click
+document.addEventListener("contextmenu", function(event) {
+    event.preventDefault();
+    showWarning("⚠️ Right-click is disabled!");
+});
+
+// Disable copy, paste, cut
+document.addEventListener("keydown", function(event) {
+    if ((event.ctrlKey || event.metaKey) && 
+        (event.key === "c" || event.key === "v" || event.key === "x" || event.key === "u")) {
+        event.preventDefault();
+        showWarning("⚠️ Copy-Paste is disabled!");
+    }
+});
+
+// Track Tab Switching Count
+let tabSwitchCount = 0;
+document.addEventListener("visibilitychange", function() {
+    if (document.hidden) {
+        tabSwitchCount++;
+        console.log(`Tab switched ${tabSwitchCount} times`);
+
+        // Send data to Django
+        fetch("/track-tab-switch/", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ count: tabSwitchCount })
+        });
+
+        if (tabSwitchCount >= 3) {
+            showWarning("⚠️ Too many tab switches! Stay focused!");
+        }
+    }
+});
+
+// Auto-reapply fullscreen if Unity exits it
+document.addEventListener("fullscreenchange", function() {
+    if (!document.fullscreenElement) {
+        console.log("Re-entering fullscreen mode...");
+        let gameIframe = document.getElementById("unity-iframe");
+        if (gameIframe) {
+            gameIframe.requestFullscreen().catch(err => console.log("Fullscreen failed:", err));
+        }
+    }
+});
+
         {% block redirection %}
         {% endblock %}
     </script>
