@@ -18,9 +18,3 @@
   <p>OUTPUT: 4</p>
 </div>
 {% endblock %}
-
-{% block redirection%}
-document.getElementById("prev-btn").addEventListener("click", () => {
-window.location.href = "{% url 'question' level=2 question=2 %}"
-});
-{% endblock %}

@@ -26,8 +26,5 @@
 document.getElementById("next-btn").addEventListener("click", () => {
     window.location.href = "{% url 'question' level=2 question=3 %}"; // Change this to the actual next page URL
 });
-document.getElementById("prev-btn").addEventListener("click", () => {
-  window.location.href = "{% url 'question' level=2 question=1 %}"
-});
 
 {% endblock %}

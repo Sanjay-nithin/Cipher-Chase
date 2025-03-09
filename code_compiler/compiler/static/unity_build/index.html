@@ -42,7 +42,7 @@
   
               if (data.redirect) {
                   console.log("🔀 Overriding Redirect:", data.redirect);
-                  window.location.href = "http://127.0.0.1:8000/level/2/question/1"; // Change this URL as needed
+                  window.location.href = data.redirect; // Change this URL as needed
                   return new Response(JSON.stringify({ success: true }), { status: 200 });
               }
           } catch (err) {

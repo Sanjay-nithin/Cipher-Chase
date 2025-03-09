@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.urls import reverse
+import json
 
 # Create your views here.
 def question_page(request, level, question):
@@ -20,8 +21,10 @@ def unity_game(request):
 def unity_button(request):
     try:
         if request.method == "POST":
-            print("Unity Button Clicked!")  
-            redirect_url = request.build_absolute_uri(reverse("question", kwargs={"level": 2, "question": 1}))
+            print("Unity Button Clicked!") 
+            data = json.loads(request.body.decode("utf-8"))  # Parse JSON body
+            level = int(data.get("level")) + 1
+            redirect_url = request.build_absolute_uri(reverse("question", kwargs={"level": 1, "question": 1}))
             print(redirect_url)
             return JsonResponse({"redirect":redirect_url}, safe=False)  # Send as JSON
         return JsonResponse({"error": "Invalid request"}, status=400)  
