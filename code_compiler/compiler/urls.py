@@ -6,4 +6,5 @@ urlpatterns = [
     path("play/", views.unity_game, name="game"),
     path("unity-button/", views.unity_button, name='unity_button'),
     path("track-tab-switch/", views.track_tab_switch, name="track_tab_switch"),
+    path("get-progress/", views.get_progress, name="get_progress"),
 ]

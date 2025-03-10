@@ -186,9 +186,35 @@
         }
         updateTimer();
     
-        document.getElementById("submit-btn").addEventListener("click", async() => {
-            showWarning("Code submitted succesfully");
+        document.getElementById("submit-btn").addEventListener("click", async () => {
+            showWarning("Code submitted successfully");
+        
+            // Django API endpoint to fetch saved progress
+            const progressAPIUrl = "http://127.0.0.1:8000/get-progress/";
+        
+            try {
+                // Fetch the saved progress from Django
+                const response = await fetch(progressAPIUrl);
+                if (response.ok) {
+                    const data = await response.json();
+                    const unlockedLevels = data.unlockedLevels;
+        
+                    console.log("Unlocked Levels from Django:", unlockedLevels);
+        
+                    // Notify Unity to restore the saved state
+                    if (typeof window.unityInstance !== "undefined") {
+                        window.unityInstance.SendMessage("GameManager", "RestoreProgress", unlockedLevels.toString());
+                    } else {
+                        console.error("Unity instance not found!");
+                    }
+                } else {
+                    console.error("Failed to fetch progress:", response.statusText);
+                }
+            } catch (error) {
+                console.error("Error fetching progress:", error);
+            }
         });
+        
         
         // Function to show a custom warning message without disrupting fullscreen
         function showWarning(message) {
