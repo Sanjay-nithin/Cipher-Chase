@@ -24,42 +24,10 @@
       </div>
     </div>
     <script>
-      console.log("🔍 Intercepting Unity's API request...");
-  
-      // Save the original fetch function
-      const originalFetch = window.fetch;
-  
-      // Override fetch to intercept Unity's API response
-      window.fetch = async function(url, options) {
-          console.log(`🌐 Intercepted API request: ${url}`);
-  
-          const response = await originalFetch(url, options);
-          const clone = response.clone(); // Clone response to modify it
-  
-          try {
-              const data = await clone.json(); // Read the JSON response
-              console.log("📩 Unity API Response:", data);
-  
-              if (data.redirect) {
-                  console.log("🔀 Overriding Redirect:", data.redirect);
-                  window.location.href = data.redirect; // Change this URL as needed
-                  return new Response(JSON.stringify({ success: true }), { status: 200 });
-              }
-          } catch (err) {
-              console.warn("❌ Failed to read response JSON", err);
-          }
-  
-          return response; // Return the original response if not overridden
-      };
-      (function () {
-    const originalOpen = XMLHttpRequest.prototype.open;
-    XMLHttpRequest.prototype.open = function (method, url) {
-        console.log(`📡 Intercepted XMLHttpRequest: ${method} ${url}`);
-        return originalOpen.apply(this, arguments);
-    };
-})();
-  </script>
-  
+      function OpenURLJS(url) {
+          window.open(url, '_blank'); // Opens in a new tab
+      }
+    </script>
   
     <script>
       var container = document.querySelector("#unity-container");
