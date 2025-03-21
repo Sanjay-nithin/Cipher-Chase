@@ -1,0 +1,45 @@
+{% extends 'level_4/finalQuestion.html' %}
+
+{% block content %}
+<div class="w-full lg:w-1/3 bg-gray-800 p-6 rounded-xl shadow-xl border border-gray-700">
+    <h1 class="text-3xl font-bold text-cyan-400">CHALLENGE-1</h1>
+    <h2 class="text-xl font-semibold mt-2 text-gray-200">The Mastermind’s Cipher.</h2>
+    <p class="mt-2 text-gray-300">
+        Decrypt a Caesar Cipher message where the shift is unknown.
+    </p>
+    <h3 class="text-lg font-semibold mt-4 text-yellow-400">TEST CASE:</h3>
+    <p id="input" class="bg-gray-700 text-gray-200 p-2 rounded mt-2">
+        INPUT: "flskhu"
+        OUTPUT: "cipher"
+    </p>
+</div>
+{% endblock %}
+
+{% block data %}
+const data = {
+    language: language,
+    version: selectedLanguage === "python" ? "3.12.0" : 
+             selectedLanguage === "java" ? "15.0.2" : 
+             selectedLanguage === "c" ? "10.2.0" : 
+             selectedLanguage === "c++" ? "10.2.0." : "latest",  
+
+    files: [{
+        name: selectedLanguage === "java" ? "Main.java" :
+             selectedLanguage === "c" ? "main.c" :
+             selectedLanguage === "c++" ? "main.cpp" : "main.py",
+        content: code
+    }],
+    "stdin": "KHOOR"
+};
+{% endblock %}
+
+{% block result_check %}
+    let ans = result.run.stdout || result.run.stderr || "No output";
+    const code = editor.getValue();
+    if (ans.trim() === "HELLO") {
+        document.getElementById("output").textContent = "Press submit and immediately call you invigilator to know your rank";
+    }
+    else {
+        document.getElementById("output").textContent = ans;
+    }
+{% endblock %}
