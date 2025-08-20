@@ -4,7 +4,12 @@ from django.views.decorators.csrf import csrf_exempt
 from .models import Team
 import requests
 import json
+from dotenv import load_dotenv
+import os
+load_dotenv()
+PISTON_API_URL = os.getenv("PISTON_API")
 
+print(PISTON_API_URL)
 # Create your views here.
 def redirect_to_login(request):
     return redirect("login_team")
@@ -102,7 +107,7 @@ def execute_code(request):
                 return JsonResponse({"error": "Invalid request format"}, status=400)
 
             # Forward request to Piston API
-            piston_url = "http://13.234.239.94:2000/api/v2/execute"
+            piston_url = PISTON_API_URL
             response = requests.post(piston_url, json=data)
 
             return JsonResponse(response.json())
