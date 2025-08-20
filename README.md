@@ -4,7 +4,7 @@
 ![Django](https://img.shields.io/badge/Django-Framework-green.svg)
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-Cipher Chase is an **interactive coding challenge game** where you solve ciphers and chase down hidden solutions.  
+Cipher Chase is an **interactive coding challenge game** where you solve coding problems and chase down hidden solutions and move through the world of AZMARA.  
 It uses a self-hosted [Piston API](https://github.com/engineer-man/piston) for code execution.
 
 ---
