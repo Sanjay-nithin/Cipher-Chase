@@ -13,11 +13,27 @@ It uses a self-hosted [Piston API](https://github.com/engineer-man/piston) for c
 
 ```bash
 Cipher-Chase/
-├── manage.py
-├── requirements.txt
-├── .env.example
-├── app/ # Main Django app
-└── README.md
+│── chase/ # Main Django app
+│ ├── pycache/ # Compiled Python files
+│ ├── migrations/ # Database migration files
+│ ├── static/ # Static files (CSS, JS, images)
+│ ├── templates/ # HTML templates
+│ ├── init.py # Marks this as a Python package
+│ ├── admin.py # Django admin configuration
+│ ├── apps.py # App configuration
+│ ├── models.py # Database models
+│ ├── tests.py # Test cases
+│ ├── urls.py # URL routing for the app
+│ └── views.py # View functions / controllers
+│
+│── cipher/ # (Custom app/module, if applicable)
+│
+│── .env # Environment variables (Piston API, secrets)
+│── cypher-key.pem # Encryption key file
+│── db.sqlite3 # SQLite database
+│── manage.py # Django project manager
+│── requirements.txt # Python dependencies
+└── README.md # Project documentation
 ```
 
 ---
