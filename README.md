@@ -28,12 +28,16 @@ Cipher-Chase/
 │
 │── cipher/ # (Custom app/module, if applicable)
     │
-    │── .env # Environment variables (Piston API, secrets)
-    │── cypher-key.pem # Encryption key file
-    │── db.sqlite3 # SQLite database
-    │── manage.py # Django project manager
-    │── requirements.txt # Python dependencies
-    └── README.md # Project documentation
+    │──settings.py
+    |──requirements.txt
+    |──urls.py
+│
+│── .env # Environment variables (Piston API, secrets)
+│── cypher-key.pem # Encryption key file
+│── db.sqlite3 # SQLite database
+│── manage.py # Django project manager
+│── requirements.txt # Python dependencies
+└── README.md # Project documentation
 ```
 
 ---
